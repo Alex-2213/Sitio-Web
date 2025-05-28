@@ -1,0 +1,377 @@
+/* Variables CSS */
+:root {
+  --primary-color: #2c3e50;
+  --secondary-color: #1abc9c;
+  --dark-color: #121212;
+  --light-color: #f8f9fa;
+  --text-color: #333;
+  --text-light: #fff;
+  --text-dark: #e0e0e0;
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
+}
+
+/* Estilos base */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+  color: var(--text-color);
+  background-color: #fff;
+  transition: var(--transition);
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/* Header */
+header {
+  background-color: var(--primary-color);
+  color: var(--text-light);
+  padding: 1rem 0;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+}
+
+header h1 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+nav a {
+  color: var(--text-light);
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  background-color: #34495e;
+  border-radius: 5px;
+  transition: var(--transition);
+}
+
+nav a:hover,
+nav a.active {
+  background-color: var(--secondary-color);
+  color: var(--text-light);
+}
+
+/* Main content */
+main {
+  padding: 2rem 0;
+}
+
+.hero {
+  text-align: center;
+  padding: 3rem 1rem;
+  background-color: var(--light-color);
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  transition: var(--transition);
+}
+
+.card {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  padding: 2rem;
+  margin-bottom: 2rem;
+  transition: var(--transition);
+}
+
+.features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.feature-card {
+  background: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  width: 300px;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+}
+
+.feature-card h3 {
+  color: var(--secondary-color);
+  margin-bottom: 0.5rem;
+}
+
+.img-responsive {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1rem auto;
+  border-radius: 5px;
+}
+
+/* Footer */
+footer {
+  background-color: var(--primary-color);
+  color: var(--text-light);
+  text-align: center;
+  padding: 1.5rem 0;
+  margin-top: 2rem;
+  transition: var(--transition);
+}
+
+/* Menú accesibilidad */
+#menu-accesibilidad {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 999;
+}
+
+.menu-btn {
+  background-color: var(--secondary-color);
+  color: white;
+  border: none;
+  padding: 1rem 1.5rem;           /* Aumenta el tamaño */
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.2rem;              /* Letra más grande */
+  font-weight: bold;             /* Más visible */
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+  transition: var(--transition);
+}
+
+
+.menu-btn:hover {
+  background-color: #16a085;
+}
+
+.submenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  border-radius: 5px;
+  padding: 0.5rem;
+  width: 200px;
+}
+
+.submenu button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  margin: 0.2rem 0;
+  background-color: transparent;
+  color: var(--text-color);
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.submenu button:hover {
+  background-color: #f0f0f0;
+  color: var(--secondary-color);
+}
+
+/* Modos de accesibilidad */
+.modo-oscuro {
+  background-color: var(--dark-color);
+  color: var(--text-dark);
+}
+
+.modo-oscuro header {
+  background-color: #1a1a1a;
+  border-bottom: 1px solid #333;
+}
+
+.modo-oscuro nav a {
+  background-color: #333;
+  color: var(--text-dark);
+}
+
+.modo-oscuro nav a:hover,
+.modo-oscuro nav a.active {
+  background-color: var(--secondary-color);
+  color: var(--dark-color);
+}
+
+.modo-oscuro .hero,
+.modo-oscuro .card,
+.modo-oscuro .feature-card {
+  background-color: #1e1e1e;
+  color: var(--text-dark);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+}
+
+.modo-oscuro .feature-card h3 {
+  color: var(--secondary-color);
+}
+
+.modo-oscuro footer {
+  background-color: #1a1a1a;
+  color: var(--text-dark);
+  border-top: 1px solid #333;
+}
+
+.modo-oscuro .submenu {
+  background-color: #1e1e1e;
+  border: 1px solid #333;
+}
+
+.modo-oscuro .submenu button {
+  color: var(--text-dark);
+}
+
+.modo-oscuro .submenu button:hover {
+  background-color: #333;
+  color: var(--secondary-color);
+}
+
+.alto-contraste {
+  background-color: black !important;
+  color: yellow !important;
+}
+
+.alto-contraste header,
+.alto-contraste footer {
+  background-color: black !important;
+  color: yellow !important;
+  border-color: yellow !important;
+}
+
+.alto-contraste nav a {
+  background-color: #333 !important;
+  color: yellow !important;
+}
+
+.alto-contraste nav a:hover {
+  background-color: yellow !important;
+  color: black !important;
+}
+
+.daltonismo {
+  filter: hue-rotate(90deg);
+}
+
+.cursor-grande {
+  cursor: url('https://cdn-icons-png.flaticon.com/512/545/545682.png'), auto;
+}
+
+/* Estilos específicos para CV */
+.cv-section {
+  margin-bottom: 1.5rem;
+}
+
+.styled-list {
+  list-style-type: none;
+  padding-left: 1rem;
+}
+
+.styled-list li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.styled-list li::before {
+  content: "•";
+  color: var(--secondary-color);
+  position: absolute;
+  left: 0;
+}
+
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.skill-tag {
+  background-color: var(--secondary-color);
+  color: white;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+}
+
+/* Estilos para formulario de contacto */
+.contact-form {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: var(--transition);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--secondary-color);
+  box-shadow: 0 0 5px rgba(26, 188, 156, 0.3);
+}
+
+.btn {
+  background-color: var(--secondary-color);
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: var(--transition);
+}
+
+.btn:hover {
+  background-color: #16a085;
+  transform: translateY(-2px);
+}
+
+/* Transiciones generales */
+body,
+header,
+nav a,
+.hero,
+.card,
+.feature-card,
+footer,
+.submenu,
+.form-group input,
+.form-group textarea {
+  transition: var(--transition);
+}

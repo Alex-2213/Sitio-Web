@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diseño Gráfico - Lo que representa</title>
+  <link rel="stylesheet" href="css/estilos.css">
+  <script defer src="js/accesibilidad.js"></script>
+  <style>
+    :root {
+      --color-primario: #2c3e50;
+      --color-secundario: #5147cc;
+      --color-accento: #3498db;
+      --color-texto: #333;
+      --color-fondo: #f9f9f9;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      line-height: 1.6;
+      color: var(--color-texto);
+      background-color: var(--color-fondo);
+      transition: all 0.3s ease;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: var(--color-primario);
+      color: white;
+      padding: 1.5rem 0;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 0.5rem 1.2rem;
+      background-color: rgba(255,255,255,0.1);
+      border-radius: 25px;
+      transition: all 0.3s;
+    }
+
+    nav a:hover, nav a.active {
+      background-color: var(--color-secundario);
+      transform: translateY(-2px);
+    }
+
+    main {
+      padding: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 4rem 1rem;
+      margin-bottom: 3rem;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      border-radius: 10px;
+      position: relative;
+      overflow: hidden;
+      animation: fadeIn 1s ease-in;
+    }
+    @keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+    .hero h2 {
+      font-size: 2.5rem;
+      color: var(--color-primario);
+      margin-bottom: 1rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin: 3rem 0;
+    }
+
+    .feature-card {
+      background: white;
+      border-radius: 10px;
+      padding: 2rem;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+      transition: all 0.3s ease;
+      border-top: 4px solid var(--color-secundario);
+    }
+
+    .feature-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+    }
+
+    .feature-icon {
+      font-size: 3rem;
+      color: var(--color-secundario);
+      margin-bottom: 1.5rem;
+    }
+
+    .examples-showcase {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin: 3rem 0;
+    }
+
+    .example-item {
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .example-item:hover {
+      transform: scale(1.03);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    }
+
+    .example-item img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .example-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(44, 62, 80, 0.9);
+      color: white;
+      padding: 1rem;
+      transform: translateY(100%);
+      transition: transform 0.3s ease;
+    }
+
+    .example-item:hover .example-overlay {
+      transform: translateY(0);
+    }
+
+    footer {
+      text-align: center;
+      background-color: var(--color-primario);
+      color: white;
+      padding: 2rem;
+      margin-top: 4rem;
+    }
+
+    /* Modo oscuro */
+    .modo-oscuro {
+      --color-primario: #1a1a2e; /*color de la barra*/
+      --color-texto: #e6e6e6;
+      --color-fondo: #1a1a2e; /*fondo*/
+      --color-secundario: #5147cc;
+    }
+
+    .modo-oscuro .feature-card,
+    .modo-oscuro .hero {
+      background: #1a4274;
+      color: #e6e6e6;
+    }
+
+    .modo-oscuro .hero {
+      background: linear-gradient(135deg, #22356a 0%, #323250 100%); /*fondo del primer recuadro*/
+    }
+
+    .modo-oscuro .hero h2 {
+      color: #e6e6e6;
+    }
+
+    .modo-oscuro .example-overlay {
+      background: #5147cc;
+    }
+
+    /* Accesibilidad */
+    .alto-contraste {
+      --color-primario: black !important;
+      --color-texto: yellow !important;
+      --color-fondo: black !important;
+      --color-secundario: yellow !important;
+    }
+
+    .alto-contraste .feature-card,
+    .alto-contraste .hero {
+      background: black !important;
+      border: 2px solid yellow !important;
+    }
+
+    .alto-contraste .example-overlay {
+      background: rgba(0,0,0,0.9) !important;
+      border-top: 2px solid yellow !important;
+    }
+
+    .daltonismo {
+      filter: hue-rotate(90deg);
+    }
+
+    .cursor-grande {
+      cursor: url('https://cdn-icons-png.flaticon.com/512/545/545682.png'), auto;
+    }
+
+    /* Menú de accesibilidad */
+    #menu-accesibilidad {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      z-index: 999;
+    }
+
+    .menu-btn {
+      background-color: var(--color-secundario);
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: all 0.3s;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+
+    .menu-btn:hover {
+      background-color: #5147cc;
+      transform: translateY(-2px);
+    }
+
+    .submenu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background-color: white;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      border-radius: 8px;
+      padding: 0.5rem;
+      width: 220px;
+    }
+
+    .submenu button {
+      display: block;
+      background-color: transparent;
+      border: none;
+      padding: 0.7rem;
+      cursor: pointer;
+      text-align: left;
+      width: 100%;
+      transition: all 0.2s;
+      border-radius: 4px;
+    }
+
+    .submenu button:hover {
+      background-color: #f0f0f0;
+      color: var(--color-secundario);
+    }
+
+    .modo-oscuro .submenu {
+      background-color: #0f3460;
+      border: 1px solid #1a1a2e;
+    }
+
+    .modo-oscuro .submenu button {
+      color: #e6e6e6;
+    }
+
+    .modo-oscuro .submenu button:hover {
+      background-color: #1a1a2e;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Diseño Gráfico y lo que Representa</h1>
+    <nav>
+      <a href="index.html" class="active">Inicio</a>
+      <a href="tema.html">Lo que representa</a>
+      <a href="cv.html">Mi CV</a>
+      <a href="contacto.html">Contacto</a>
+      <a href="accesibilidad.html">Accesibilidad</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h2>¿Qué es el diseño gráfico?</h2>
+      <p>El diseño gráfico es una disciplina visual que comunica ideas mediante imágenes, tipografía, colores y composiciones. Está presente en todo: desde la publicidad hasta la identidad de marca.</p>
+    </section>
+
+    <section>
+      <h2 style="text-align: center; margin-bottom: 1.5rem; color: var(--color-texto);">Nuestros Principios</h2>
+      
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🎨</div>
+          <h3>Comunicación Visual</h3>
+          <p>El diseño gráfico transforma conceptos en mensajes visuales claros y efectivos.</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">💡</div>
+          <h3>Creatividad e Identidad</h3>
+    <p>Refleja la identidad de marcas, productos o causas a través de elementos visuales únicos.</p>
+  </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">🖥️</div>
+          <h3>Aplicaciones Prácticas</h3>
+    <p>Desde el diseño editorial hasta la experiencia de usuario, su impacto es amplio.</p>
+  </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 style="text-align: center; margin: 3rem 0 1.5rem; color: var(--color-texto);">Ejemplos de Éxito</h2>
+      
+      <div class="examples-showcase">
+        <div class="example-item">
+          <img src="C:\Users\alici\OneDrive\Documentos\DISEÑO Y EVALUACIÓN DE INTERFACES\Accesibilidad\LOGO-APPLE.jpeg" alt="Apple">
+          <div class="example-overlay">
+            <h3>Apple</h3>
+            <p>Apple ha revolucionado el diseño gráfico con su enfoque minimalista y elegante en todos sus productos, publicidad y empaque.</p>
+          </div>
+        </div>
+        
+        <div class="example-item">
+          <img src="C:\Users\alici\OneDrive\Documentos\DISEÑO Y EVALUACIÓN DE INTERFACES\Accesibilidad\LOGO-COCA.jpeg" alt="Formación docente">
+          <div class="example-overlay">
+            <h3>Coca-Cola</h3>
+            <p>El logotipo clásico de Coca-Cola es uno de los ejemplos más icónicos de diseño gráfico.</p>
+          </div>
+        </div>
+        
+        <div class="example-item">
+          <img src="C:\Users\alici\OneDrive\Documentos\DISEÑO Y EVALUACIÓN DE INTERFACES\Accesibilidad\LOGO-NIKE.jpeg" alt="Tecnología educativa">
+          <div class="example-overlay">
+            <h3>Nike</h3>
+            <p>El famoso "swoosh" (paloma) de Nike es un excelente ejemplo de un logotipo simple pero poderoso.</p>
+          </div>
+        </div>
+        
+        <div class="example-item">
+          <img src="C:\Users\alici\OneDrive\Documentos\DISEÑO Y EVALUACIÓN DE INTERFACES\Accesibilidad\LOGO-GOOGLE.jpeg" alt="Programa de becas">
+          <div class="example-overlay">
+            <h3>Google</h3>
+            <p>Google ha sabido evolucionar su diseño gráfico, desde su logotipo hasta sus interfaces.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Menú de Accesibilidad -->
+  <div id="menu-accesibilidad">
+    <button class="menu-btn" onclick="toggleMenu()">⚙ Ajustes</button>
+    <div id="submenu" class="submenu">
+      <button onclick="cambiarTamanoFuente(1)">Aumentar Fuente</button>
+      <button onclick="cambiarTamanoFuente(-1)">Disminuir Fuente</button>
+      <button onclick="cambiarFuente()">Cambiar Fuente</button>
+      <button onclick="alternarModoOscuro()">Modo Oscuro</button>
+      <button onclick="modoAltoContraste()">Alto Contraste</button>
+      <button onclick="modoDaltonismo()">Modo Daltonismo</button>
+      <button onclick="cambiarCursor()">Cambiar Cursor</button>
+      <button onclick="quitarImagenes()">Quitar Imágenes</button>
+      <button onclick="sobresaltarLinks()">Resaltar Links</button>
+      <button onclick="restablecerOriginal()">Restablecer</button>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 - Diseño Gráfico por Alexia Borrego</p>
+    <p>Promoviendo el Diseño Gráfico y lo que Representa</p>
+  </footer>
+
+  <script>
+    // Funciones de accesibilidad
+    let tamañoActual = 1;
+    const fuentes = ['Arial, sans-serif', 'Verdana, sans-serif', "'Courier New', monospace", "'OpenDyslexic', sans-serif"];
+    let indiceFuente = 0;
+    let imagenesOcultas = false;
+    let linksResaltados = false;
+
+    function cambiarTamanoFuente(factor) {
+      tamañoActual += factor * 0.25;
+      tamañoActual = Math.max(0.5, Math.min(3, tamañoActual));
+      document.body.style.fontSize = tamañoActual + 'em';
+      localStorage.setItem('tamañoFuente', tamañoActual);
+    }
+
+    function cambiarFuente() {
+      indiceFuente = (indiceFuente + 1) % fuentes.length;
+      document.body.style.fontFamily = fuentes[indiceFuente];
+      localStorage.setItem('indiceFuente', indiceFuente);
+    }
+
+    function alternarModoOscuro() {
+      document.body.classList.toggle('modo-oscuro');
+      localStorage.setItem('modoOscuro', document.body.classList.contains('modo-oscuro'));
+    }
+
+    function modoAltoContraste() {
+      document.body.classList.toggle('alto-contraste');
+      localStorage.setItem('altoContraste', document.body.classList.contains('alto-contraste'));
+    }
+
+    function modoDaltonismo() {
+      document.body.classList.toggle('daltonismo');
+      localStorage.setItem('daltonismo', document.body.classList.contains('daltonismo'));
+    }
+
+    function cambiarCursor() {
+      document.body.classList.toggle('cursor-grande');
+      localStorage.setItem('cursorGrande', document.body.classList.contains('cursor-grande'));
+    }
+
+    function quitarImagenes() {
+      const imagenes = document.querySelectorAll('img');
+      imagenesOcultas = !imagenesOcultas;
+      imagenes.forEach(img => {
+        img.style.display = imagenesOcultas ? 'none' : '';
+      });
+      localStorage.setItem('imagenesOcultas', imagenesOcultas);
+    }
+
+    function sobresaltarLinks() {
+      const links = document.querySelectorAll('a');
+      linksResaltados = !linksResaltados;
+      links.forEach(a => {
+        if (linksResaltados) {
+          a.style.backgroundColor = 'yellow';
+          a.style.textDecoration = 'underline';
+          a.style.color = 'black';
+        } else {
+          a.style.backgroundColor = '';
+          a.style.textDecoration = '';
+          a.style.color = '';
+        }
+      });
+      localStorage.setItem('linksResaltados', linksResaltados);
+    }
+
+    function restablecerOriginal() {
+      tamañoActual = 1;
+      document.body.style.fontSize = '';
+      localStorage.removeItem('tamañoFuente');
+      
+      indiceFuente = 0;
+      document.body.style.fontFamily = '';
+      localStorage.removeItem('indiceFuente');
+      
+      document.body.classList.remove('modo-oscuro', 'alto-contraste', 'daltonismo', 'cursor-grande');
+      localStorage.removeItem('modoOscuro');
+      localStorage.removeItem('altoContraste');
+      localStorage.removeItem('daltonismo');
+      localStorage.removeItem('cursorGrande');
+      
+      document.querySelectorAll('img').forEach(img => img.style.display = '');
+      localStorage.removeItem('imagenesOcultas');
+      
+      document.querySelectorAll('a').forEach(a => {
+        a.style.backgroundColor = '';
+        a.style.textDecoration = '';
+        a.style.color = '';
+      });
+      localStorage.removeItem('linksResaltados');
+    }
+
+    function toggleMenu() {
+      const menu = document.getElementById("submenu");
+      menu.style.display = (menu.style.display === "block") ? "none" : "block";
+    }
+
+    // Cargar preferencias al iniciar
+    document.addEventListener('DOMContentLoaded', () => {
+      if (localStorage.getItem('tamañoFuente')) {
+        tamañoActual = parseFloat(localStorage.getItem('tamañoFuente'));
+        document.body.style.fontSize = tamañoActual + 'em';
+      }
+      
+      if (localStorage.getItem('indiceFuente')) {
+        indiceFuente = parseInt(localStorage.getItem('indiceFuente'));
+        document.body.style.fontFamily = fuentes[indiceFuente];
+      }
+      
+      if (localStorage.getItem('modoOscuro') === 'true') {
+        document.body.classList.add('modo-oscuro');
+      }
+      
+      if (localStorage.getItem('altoContraste') === 'true') {
+        document.body.classList.add('alto-contraste');
+      }
+      
+      if (localStorage.getItem('daltonismo') === 'true') {
+        document.body.classList.add('daltonismo');
+      }
+      
+      if (localStorage.getItem('cursorGrande') === 'true') {
+        document.body.classList.add('cursor-grande');
+      }
+
+      // Cerrar menú al hacer clic fuera
+      document.addEventListener('click', function(event) {
+        const menu = document.getElementById("submenu");
+        const btn = document.querySelector(".menu-btn");
+        if (!menu.contains(event.target) && !btn.contains(event.target)) {
+          menu.style.display = "none";
+        }
+      });
+    });
+  </script>
+</body>
+</html>

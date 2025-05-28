@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diseño Gráfico - Lo que representa</title>
+  <link rel="stylesheet" href="css/estilos.css">
+  <script defer src="js/accesibilidad.js"></script>
+  <style>
+    :root {
+      --color-primario: #2c3e50;
+      --color-secundario: #5147cc;
+      --color-accento: #3498db;
+      --color-texto: #333;
+      --color-fondo: #f9f9f9;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      line-height: 1.6;
+      color: var(--color-texto);
+      background-color: var(--color-fondo);
+      transition: all 0.3s ease;
+    margin: 0;
+    padding: 0;
+    }
+
+    header {
+      background-color: var(--color-primario);
+      color: white;
+      padding: 1.5rem 0;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 0.5rem 1.2rem;
+      background-color: rgba(255,255,255,0.1);
+      border-radius: 25px;
+      transition: all 0.3s;
+    }
+
+    nav a:hover, nav a.active {
+      background-color: var(--color-secundario);
+      transform: translateY(-2px);
+    }
+
+    main {
+      padding: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+
+    .hero-section h2 {
+      font-size: 2.2rem;
+      color: var(--color-primario);
+      margin-bottom: 1rem;
+    }
+
+    .concept-card {
+      background: white;
+      border-radius: 8px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      border-top: 4px solid var(--color-accento);
+      animation: fadeIn 1s ease-in;
+    }
+
+    @keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+    .design-principles {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .principle {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+      transition: transform 0.3s;
+    }
+
+    .principle:hover {
+      transform: translateY(-5px);
+    }
+
+    .principle-icon {
+      font-size: 2.5rem;
+      color: var(--color-accento);
+      margin-bottom: 1rem;
+    }
+
+    .color-palette {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin: 1.5rem 0;
+      justify-content: center;
+    }
+
+    .color-box {
+      width: 100px;
+      height: 100px;
+      border-radius: 8px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding: 0.5rem;
+      color: white;
+      font-weight: bold;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    }
+
+    footer {
+      text-align: center;
+      background-color: var(--color-primario);
+      color: white;
+      padding: 2rem;
+      margin-top: 4rem;
+    }
+
+    /* Modo oscuro */
+    .modo-oscuro {
+      --color-primario: #1a1a2e;
+      --color-texto: #e6e6e6;
+      --color-fondo: #16213e;
+      --color-secundario: #5147cc;
+    }
+
+    .modo-oscuro .feature-card,
+    .modo-oscuro .hero {
+      background: #0f3460;
+      color: #e6e6e6;
+    }
+
+    
+    .modo-oscuro .hero {
+      background: linear-gradient(135deg, #16213e 0%, #1a1a2e 100%);
+    }
+
+    .modo-oscuro .hero h2 {
+      color: #e6e6e6;
+    }
+
+    .modo-oscuro .example-overlay {
+      background: #5147cc;
+    }
+
+
+    
+    /* Accesibilidad */
+    .alto-contraste {
+      --color-primario: black !important;
+      --color-texto: yellow !important;
+      --color-fondo: black !important;
+      --color-secundario: yellow !important;
+    }
+
+    .alto-contraste .feature-card,
+    .alto-contraste .hero {
+      background: black !important;
+      border: 2px solid yellow !important;
+    }
+
+    .alto-contraste .example-overlay {
+      background: rgba(0,0,0,0.9) !important;
+      border-top: 2px solid yellow !important;
+    }
+
+    .daltonismo {
+      filter: hue-rotate(90deg);
+    }
+
+    .cursor-grande {
+      cursor: url('https://cdn-icons-png.flaticon.com/512/545/545682.png'), auto;
+    }
+
+
+    /* Menú de accesibilidad (igual que en index.html) */
+    #menu-accesibilidad {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      z-index: 999;
+    }
+
+    .menu-btn {
+      background-color: var(--color-secundario);
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: all 0.3s;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+
+    
+    .menu-btn:hover {
+      background-color: #16a085;
+      transform: translateY(-2px);
+    }
+
+
+    .submenu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background-color: white;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      border-radius: 8px;
+      padding: 0.5rem;
+      width: 220px;
+    }
+
+    .submenu button {
+      display: block;
+      background-color: transparent;
+      border: none;
+      padding: 0.7rem;
+      cursor: pointer;
+      text-align: left;
+      width: 100%;
+      transition: all 0.2s;
+      border-radius: 4px;
+    }
+
+    
+    .submenu button:hover {
+      background-color: #f0f0f0;
+      color: var(--color-secundario);
+    }
+
+    .modo-oscuro .submenu {
+      background-color: #0f3460;
+      border: 1px solid #1a1a2e;
+    }
+
+    .modo-oscuro .submenu button {
+      color: #e6e6e6;
+    }
+
+    .modo-oscuro .submenu button:hover {
+      background-color: #1a1a2e;
+    }
+
+
+  </style>
+</head>
+<body>
+  <header>
+    <h1>El Poder del Diseño Gráfico</h1>
+    <nav>
+      <a href="index.html">Inicio</a>
+      <a href="tema.html" class="active">Lo que representa</a>
+      <a href="cv.html">Mi CV</a>
+      <a href="contacto.html">Contacto</a>
+      <a href="accesibilidad.html">Accesibilidad</a>
+    </nav>
+  </header>
+
+  <main>
+    
+
+    <section class="concept-card">
+      <h2>¿Qué representa el diseño gráfico?</h2>
+      <p>El diseño gráfico va más allá de simples imágenes bonitas. Es un <strong>lenguaje visual</strong> que combina arte, psicología y comunicación para:</p>
+      
+      <ul>
+        <li>Transmitir mensajes complejos de forma inmediata</li>
+        <li>Crear identidades memorables</li>
+        <li>Influir en emociones y decisiones</li>
+        <li>Resolver problemas de comunicación</li>
+        <li>Dar forma a la cultura visual de nuestra época</li>
+      </ul>
+      
+      <div class="color-palette">
+        <div class="color-box" style="background-color: #e74c3c;">Pasión<br>#e74c3c</div>
+        <div class="color-box" style="background-color: #3498db;">Confianza<br>#3498db</div>
+        <div class="color-box" style="background-color: #2ecc71;">Crecimiento<br>#2ecc71</div>
+        <div class="color-box" style="background-color: #f39c12;">Energía<br>#f39c12</div>
+        <div class="color-box" style="background-color: #9b59b6;">Creatividad<br>#9b59b6</div>
+      </div>
+    </section>
+
+    <section class="concept-card">
+      <h2>Principios fundamentales</h2>
+      
+      <div class="design-principles">
+        <div class="principle">
+          <div class="principle-icon">🖌️</div>
+          <h3>Contraste</h3>
+          <p>Crea jerarquía visual y hace los diseños más legibles y dinámicos mediante la oposición de elementos.</p>
+        </div>
+        
+        <div class="principle">
+          <div class="principle-icon">🔲</div>
+          <h3>Alineación</h3>
+          <p>Proporciona orden y conexión visual entre los elementos del diseño.</p>
+        </div>
+        
+        <div class="principle">
+          <div class="principle-icon">♻️</div>
+          <h3>Repetición</h3>
+          <p>Fortalecela identidad visual y crea consistencia en el diseño.</p>
+        </div>
+        
+        <div class="principle">
+          <div class="principle-icon">⏳</div>
+          <h3>Proximidad</h3>
+          <p>Agrupa elementos relacionados para crear unidades visuales coherentes.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="concept-card">
+      <h2>El impacto del diseño gráfico</h2>
+      <p>En nuestra sociedad digital, el diseño gráfico se ha convertido en el <strong>lenguaje universal</strong> que trasciende barreras culturales y lingüísticas:</p>
+      
+      <div style="overflow-x: auto;">
+        <table style="width: 100%; border-collapse: collapse; margin: 1.5rem 0;">
+          <thead>
+            <tr style="background-color: var(--color-accento); color: white;">
+              <th style="padding: 12px; text-align: left;">Área</th>
+              <th style="padding: 12px; text-align: left;">Impacto</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom: 1px solid #ddd;">
+              <td style="padding: 12px;">Publicidad</td>
+              <td style="padding: 12px;">Aumenta el reconocimiento de marca en un 80%</td>
+            </tr>
+            <tr style="border-bottom: 1px solid #ddd;">
+              <td style="padding: 12px;">Educación</td>
+              <td style="padding: 12px;">Mejora la retención de información en un 65%</td>
+            </tr>
+            <tr style="border-bottom: 1px solid #ddd;">
+              <td style="padding: 12px;">Web</td>
+              <td style="padding: 12px;">Diseños efectivos aumentan la conversión en 200%</td>
+            </tr>
+            <tr>
+              <td style="padding: 12px;">Social Media</td>
+              <td style="padding: 12px;">Contenido visual genera 94% más vistas</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+   <!-- Menú de Accesibilidad -->
+  <div id="menu-accesibilidad">
+    <button class="menu-btn" onclick="toggleMenu()">⚙ Ajustes</button>
+    <div id="submenu" class="submenu">
+      <button onclick="cambiarTamanoFuente(1)">Aumentar Fuente</button>
+      <button onclick="cambiarTamanoFuente(-1)">Disminuir Fuente</button>
+      <button onclick="cambiarFuente()">Cambiar Fuente</button>
+      <button onclick="alternarModoOscuro()">Modo Oscuro</button>
+      <button onclick="modoAltoContraste()">Alto Contraste</button>
+      <button onclick="modoDaltonismo()">Modo Daltonismo</button>
+      <button onclick="cambiarCursor()">Cambiar Cursor</button>
+      <button onclick="quitarImagenes()">Quitar Imágenes</button>
+      <button onclick="sobresaltarLinks()">Resaltar Links</button>
+      <button onclick="restablecerOriginal()">Restablecer</button>
+    </div>
+  </div>
+
+<footer>
+  <p>&copy; 2025 - Diseño Gráfico por Alexia Borrego</p>
+  <p>Promoviendo el Diseño Gráfico y lo que Representa</p>
+</footer>
+
+<script>
+  // Funciones de accesibilidad
+  let tamañoActual = 1;
+  const fuentes = ['Arial, sans-serif', 'Verdana, sans-serif', "'Courier New', monospace", "'OpenDyslexic', sans-serif"];
+  let indiceFuente = 0;
+  let imagenesOcultas = false;
+  let linksResaltados = false;
+
+  function cambiarTamanoFuente(factor) {
+    tamañoActual += factor * 0.25;
+    tamañoActual = Math.max(0.5, Math.min(3, tamañoActual));
+    document.body.style.fontSize = tamañoActual + 'em';
+    localStorage.setItem('tamañoFuente', tamañoActual);
+  }
+
+  function cambiarFuente() {
+    indiceFuente = (indiceFuente + 1) % fuentes.length;
+    document.body.style.fontFamily = fuentes[indiceFuente];
+    localStorage.setItem('indiceFuente', indiceFuente);
+  }
+
+  function alternarModoOscuro() {
+      document.body.classList.toggle('modo-oscuro');
+      localStorage.setItem('modoOscuro', document.body.classList.contains('modo-oscuro'));
+    }
+
+    function modoAltoContraste() {
+      document.body.classList.toggle('alto-contraste');
+      localStorage.setItem('altoContraste', document.body.classList.contains('alto-contraste'));
+    }
+
+    function modoDaltonismo() {
+      document.body.classList.toggle('daltonismo');
+      localStorage.setItem('daltonismo', document.body.classList.contains('daltonismo'));
+    }
+
+    function cambiarCursor() {
+      document.body.classList.toggle('cursor-grande');
+      localStorage.setItem('cursorGrande', document.body.classList.contains('cursor-grande'));
+    }
+
+    function quitarImagenes() {
+      const imagenes = document.querySelectorAll('img');
+      imagenesOcultas = !imagenesOcultas;
+      imagenes.forEach(img => {
+        img.style.display = imagenesOcultas ? 'none' : '';
+      });
+      localStorage.setItem('imagenesOcultas', imagenesOcultas);
+    }
+
+
+   function sobresaltarLinks() {
+      const links = document.querySelectorAll('a');
+      linksResaltados = !linksResaltados;
+      links.forEach(a => {
+        if (linksResaltados) {
+          a.style.backgroundColor = 'yellow';
+          a.style.textDecoration = 'underline';
+          a.style.color = 'black';
+        } else {
+          a.style.backgroundColor = '';
+          a.style.textDecoration = '';
+          a.style.color = '';
+        }
+      });
+      localStorage.setItem('linksResaltados', linksResaltados);
+    }
+
+
+  function restablecerOriginal() {
+    tamañoActual = 1;
+    document.body.style.fontSize = '';
+    localStorage.removeItem('tamañoFuente');
+    
+    indiceFuente = 0;
+    document.body.style.fontFamily = '';
+    localStorage.removeItem('indiceFuente');
+    
+    document.body.classList.remove('modo-oscuro', 'alto-contraste', 'daltonismo', 'cursor-grande');
+    localStorage.removeItem('modoOscuro');
+    localStorage.removeItem('altoContraste');
+    localStorage.removeItem('daltonismo');
+    localStorage.removeItem('cursorGrande');
+    
+    document.querySelectorAll('img').forEach(img => img.style.display = '');
+    localStorage.removeItem('imagenesOcultas');
+    
+    document.querySelectorAll('a').forEach(a => {
+      a.style.backgroundColor = '';
+      a.style.textDecoration = '';
+      a.style.color = '';
+    });
+    localStorage.removeItem('linksResaltados');
+  }
+
+  function toggleMenu() {
+    const menu = document.getElementById("submenu");
+    menu.style.display = (menu.style.display === "block") ? "none" : "block";
+  }
+
+  // Cargar preferencias al iniciar
+  document.addEventListener('DOMContentLoaded', () => {
+      if (localStorage.getItem('tamañoFuente')) {
+        tamañoActual = parseFloat(localStorage.getItem('tamañoFuente'));
+        document.body.style.fontSize = tamañoActual + 'em';
+      }
+      
+      if (localStorage.getItem('indiceFuente')) {
+        indiceFuente = parseInt(localStorage.getItem('indiceFuente'));
+        document.body.style.fontFamily = fuentes[indiceFuente];
+      }
+      
+      if (localStorage.getItem('modoOscuro') === 'true') {
+        document.body.classList.add('modo-oscuro');
+      }
+      
+      if (localStorage.getItem('altoContraste') === 'true') {
+        document.body.classList.add('alto-contraste');
+      }
+      
+      if (localStorage.getItem('daltonismo') === 'true') {
+        document.body.classList.add('daltonismo');
+      }
+      
+      if (localStorage.getItem('cursorGrande') === 'true') {
+        document.body.classList.add('cursor-grande');
+      }
+
+    // Cerrar menú al hacer clic fuera
+    document.addEventListener('click', function(event) {
+      const menu = document.getElementById("submenu");
+      const btn = document.querySelector(".menu-btn");
+      if (!menu.contains(event.target) && !btn.contains(event.target)) {
+        menu.style.display = "none";
+      }
+    });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi CV</title>
+  <link rel="stylesheet" href="css/estilos.css">
+  <script defer src="js/accesibilidad.js"></script>
+</head>
+<style>
+  :root {
+    --color-primario: #2c3e50;
+    --color-secundario: #5147cc;
+    --color-accento: #3498db;
+    --color-texto: #333;
+    --color-fondo: #f9f9f9;
+  }
+
+  body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: var(--color-texto);
+    background-color: var(--color-fondo);
+    transition: all 0.3s ease;
+    margin: 0;
+    padding: 0;
+  }
+
+  header {
+    background-color: var(--color-primario);
+    color: white;
+    padding: 1.5rem 0;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  }
+
+  nav {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+  }
+
+  nav a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1.2rem;
+    background-color: rgba(255,255,255,0.1);
+    border-radius: 25px;
+    transition: all 0.3s;
+  }
+
+  nav a:hover, nav a.active {
+    background-color: var(--color-secundario);
+    transform: translateY(-2px);
+  }
+
+  main {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  footer {
+      text-align: center;
+      background-color: var(--color-primario);
+      color: white;
+      padding: 2rem;
+      margin-top: 4rem;
+    }
+
+    /* Modo oscuro */
+    .modo-oscuro {
+      --color-primario: #1a1a2e; /*color de la barra*/
+      --color-texto: #e6e6e6;
+      --color-fondo: #1a1a2e; /*fondo*/
+      --color-secundario: #5147cc;
+    }
+
+    .modo-oscuro .feature-card,
+    .modo-oscuro .hero {
+      background: #1a4274;
+      color: #e6e6e6;
+    }
+
+    .modo-oscuro .hero {
+      background: linear-gradient(135deg, #22356a 0%, #323250 100%); /*fondo del primer recuadro*/
+    }
+
+    .modo-oscuro .hero h2 {
+      color: #e6e6e6;
+    }
+
+    .modo-oscuro .example-overlay {
+      background: rgba(26, 188, 156, 0.9);
+    }
+
+    /* Accesibilidad */
+    .alto-contraste {
+      --color-primario: black !important;
+      --color-texto: yellow !important;
+      --color-fondo: black !important;
+      --color-secundario: yellow !important;
+    }
+
+    .alto-contraste .feature-card,
+    .alto-contraste .hero {
+      background: black !important;
+      border: 2px solid yellow !important;
+    }
+
+    .alto-contraste .example-overlay {
+      background: rgba(0,0,0,0.9) !important;
+      border-top: 2px solid yellow !important;
+    }
+
+    .daltonismo {
+      filter: hue-rotate(90deg);
+    }
+
+    .cursor-grande {
+      cursor: url('https://cdn-icons-png.flaticon.com/512/545/545682.png'), auto;
+    }
+
+    /* Menú de accesibilidad */
+    #menu-accesibilidad {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      z-index: 999;
+    }
+
+    .menu-btn {
+      background-color: var(--color-secundario);
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: all 0.3s;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+
+    .menu-btn:hover {
+      background-color: #5147cc;
+      transform: translateY(-2px);
+    }
+
+    .submenu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background-color: white;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      border-radius: 8px;
+      padding: 0.5rem;
+      width: 220px;
+    }
+
+    .submenu button {
+      display: block;
+      background-color: transparent;
+      border: none;
+      padding: 0.7rem;
+      cursor: pointer;
+      text-align: left;
+      width: 100%;
+      transition: all 0.2s;
+      border-radius: 4px;
+    }
+
+    .submenu button:hover {
+      background-color: #f0f0f0;
+      color: var(--color-secundario);
+    }
+
+    .modo-oscuro .submenu {
+      background-color: #0f3460;
+      border: 1px solid #1a1a2e;
+    }
+
+    .modo-oscuro .submenu button {
+      color: #e6e6e6;
+    }
+
+    .modo-oscuro .submenu button:hover {
+      background-color: #1a1a2e;
+    }
+  </style>
+</head>
+<body>
+
+<body>
+  <header>
+    <div class="container">
+      <h1>Mi CV en Diseño</h1>
+      <nav>
+        <a href="index.html">Inicio</a>
+        <a href="tema.html">Lo que representa</a>
+        <a href="cv.html" class="active">Mi CV</a>
+        <a href="contacto.html">Contacto</a>
+        <a href="accesibilidad.html">Accesibilidad</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="cv-container">
+    <section class="cv-header">
+      <img src="yop.jpg" alt="Foto de Alexia Borrego" class="cv-foto">
+      <div class="cv-titulo">
+        <h1>Alexia Borrego</h1>
+        <p>Diseñadora Gráfica & Estudiante de Ingeniería de Software</p>
+      </div>
+    </section>
+  
+    <section class="cv-seccion">
+      <h2>Perfil Profesional</h2>
+      <p>Soy una apasionada del diseño gráfico con conocimientos en desarrollo web y accesibilidad digital. Me encanta transformar ideas en experiencias visuales impactantes, útiles e inclusivas.</p>
+    </section>
+  
+    <section class="cv-seccion">
+      <h2>Educación</h2>
+      <ul>
+        <li><strong>Universidad de Colima</strong> - Ingeniería de Software (2021 - Actualidad)</li>
+        <li><em>Cursos:</em> Diseño UX/UI, Tipografía Creativa, Accesibilidad Web</li>
+      </ul>
+    </section>
+  
+    <section class="cv-seccion">
+      <h2>Experiencia</h2>
+      <ul>
+        <li><strong>Diseñadora Freelance</strong> (2022 - Presente)
+          <p>Creación de identidad visual, flyers, materiales para redes sociales y proyectos académicos.</p>
+        </li>
+        <li><strong>Proyectos Universitarios</strong>
+          <p>Participación en plataformas web con enfoque en diseño accesible y atractivo visual.</p>
+        </li>
+      </ul>
+    </section>
+  
+    <section class="cv-seccion">
+      <h2>Habilidades</h2>
+      <div class="cv-habilidades">
+        <span>Illustrator</span>
+        <span>Photoshop</span>
+        <span>HTML/CSS</span>
+        <span>Diseño Accesible</span>
+        <span>Figma</span>
+        <span>Creatividad Visual</span>
+      </div>
+    </section>
+  
+    <section class="cv-seccion">
+      <h2>Idiomas</h2>
+      <ul>
+        <li>Español: Nativo</li>
+        <li>Inglés: Intermedio (B1)</li>
+      </ul>
+    </section>
+  
+    <section class="cv-seccion contacto">
+      <h2>Contacto</h2>
+      <p><strong>Email:</strong> alexia.borrego@example.com</p>
+      <p><strong>LinkedIn:</strong> linkedin.com/in/alexiaborrego</p>
+      <p><strong>Portafolio:</strong> alexiaborregodg.com</p>
+    </section>
+  </main>
+  
+  <style>
+    .cv-container {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 2rem;
+      background: linear-gradient(to right, #fefefe, #f2f2f2);
+      border-radius: 20px;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+      animation: fadeIn 1s ease-in;
+    }
+  
+    .cv-header {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      border-bottom: 3px solid #e0e0e0;
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+  
+    .cv-foto {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid #6c63ff;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+  
+    .cv-titulo h1 {
+      margin: 0;
+      font-size: 2.5em;
+      color: #333;
+    }
+  
+    .cv-titulo p {
+      font-style: italic;
+      color: #666;
+      font-size: 1.1em;
+    }
+  
+    .cv-seccion {
+      margin-bottom: 2.5rem;
+    }
+  
+    .cv-seccion h2 {
+      color: #6c63ff;
+      font-size: 1.6em;
+      border-left: 5px solid #6c63ff;
+      padding-left: 1rem;
+      margin-bottom: 1rem;
+    }
+  
+    .cv-seccion ul {
+      list-style: none;
+      padding-left: 0;
+    }
+  
+    .cv-seccion ul li {
+      margin-bottom: 0.75rem;
+      line-height: 1.5;
+    }
+  
+    .cv-habilidades {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+  
+    .cv-habilidades span {
+      background: #6c63ff;
+      color: white;
+      padding: 0.6rem 1.2rem;
+      border-radius: 25px;
+      font-size: 0.95em;
+      transition: transform 0.2s ease;
+    }
+  
+    .cv-habilidades span:hover {
+      transform: scale(1.1);
+      background-color: #5147cc;
+    }
+  
+    .contacto p {
+      line-height: 1.6;
+      color: #444;
+    }
+  
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+  
+  
+<!-- Menú de Accesibilidad -->
+<div id="menu-accesibilidad">
+  <button class="menu-btn" onclick="toggleMenu()">⚙ Ajustes</button>
+  <div id="submenu" class="submenu">
+    <button onclick="cambiarTamanoFuente(1)">Aumentar Fuente</button>
+    <button onclick="cambiarTamanoFuente(-1)">Disminuir Fuente</button>
+    <button onclick="cambiarFuente()">Cambiar Fuente</button>
+    <button onclick="alternarModoOscuro()">Modo Oscuro</button>
+    <button onclick="modoAltoContraste()">Alto Contraste</button>
+    <button onclick="modoDaltonismo()">Modo Daltonismo</button>
+    <button onclick="cambiarCursor()">Cambiar Cursor</button>
+    <button onclick="quitarImagenes()">Quitar Imágenes</button>
+    <button onclick="sobresaltarLinks()">Resaltar Links</button>
+    <button onclick="restablecerOriginal()">Restablecer</button>
+  </div>
+</div>
+
+<footer>
+  <p>&copy; 2025 - Diseño Gráfico por Alexia Borrego</p>
+  <p>Promoviendo el Diseño Gráfico y lo que Representa</p>
+</footer>
+
+<script>
+  // Funciones de accesibilidad
+  let tamañoActual = 1;
+  const fuentes = ['Arial, sans-serif', 'Verdana, sans-serif', "'Courier New', monospace", "'OpenDyslexic', sans-serif"];
+  let indiceFuente = 0;
+  let imagenesOcultas = false;
+  let linksResaltados = false;
+
+  function cambiarTamanoFuente(factor) {
+    tamañoActual += factor * 0.25;
+    tamañoActual = Math.max(0.5, Math.min(3, tamañoActual));
+    document.body.style.fontSize = tamañoActual + 'em';
+    localStorage.setItem('tamañoFuente', tamañoActual);
+  }
+
+  function cambiarFuente() {
+    indiceFuente = (indiceFuente + 1) % fuentes.length;
+    document.body.style.fontFamily = fuentes[indiceFuente];
+    localStorage.setItem('indiceFuente', indiceFuente);
+  }
+
+  function alternarModoOscuro() {
+    document.body.classList.toggle('modo-oscuro');
+    localStorage.setItem('modoOscuro', document.body.classList.contains('modo-oscuro'));
+  }
+
+  function modoAltoContraste() {
+    document.body.classList.toggle('alto-contraste');
+    localStorage.setItem('altoContraste', document.body.classList.contains('alto-contraste'));
+  }
+
+  function modoDaltonismo() {
+    document.body.classList.toggle('daltonismo');
+    localStorage.setItem('daltonismo', document.body.classList.contains('daltonismo'));
+  }
+
+  function cambiarCursor() {
+    document.body.classList.toggle('cursor-grande');
+    localStorage.setItem('cursorGrande', document.body.classList.contains('cursor-grande'));
+  }
+
+  function quitarImagenes() {
+    const imagenes = document.querySelectorAll('img');
+    imagenesOcultas = !imagenesOcultas;
+    imagenes.forEach(img => {
+      img.style.display = imagenesOcultas ? 'none' : '';
+    });
+    localStorage.setItem('imagenesOcultas', imagenesOcultas);
+  }
+
+  function sobresaltarLinks() {
+    const links = document.querySelectorAll('a');
+    linksResaltados = !linksResaltados;
+    links.forEach(a => {
+      if (linksResaltados) {
+        a.style.backgroundColor = 'yellow';
+        a.style.textDecoration = 'underline';
+        a.style.color = 'black';
+      } else {
+        a.style.backgroundColor = '';
+        a.style.textDecoration = '';
+        a.style.color = '';
+      }
+    });
+    localStorage.setItem('linksResaltados', linksResaltados);
+  }
+
+  function restablecerOriginal() {
+    tamañoActual = 1;
+    document.body.style.fontSize = '';
+    localStorage.removeItem('tamañoFuente');
+    
+    indiceFuente = 0;
+    document.body.style.fontFamily = '';
+    localStorage.removeItem('indiceFuente');
+    
+    document.body.classList.remove('modo-oscuro', 'alto-contraste', 'daltonismo', 'cursor-grande');
+    localStorage.removeItem('modoOscuro');
+    localStorage.removeItem('altoContraste');
+    localStorage.removeItem('daltonismo');
+    localStorage.removeItem('cursorGrande');
+    
+    document.querySelectorAll('img').forEach(img => img.style.display = '');
+    localStorage.removeItem('imagenesOcultas');
+    
+    document.querySelectorAll('a').forEach(a => {
+      a.style.backgroundColor = '';
+      a.style.textDecoration = '';
+      a.style.color = '';
+    });
+    localStorage.removeItem('linksResaltados');
+  }
+
+  function toggleMenu() {
+    const menu = document.getElementById("submenu");
+    menu.style.display = (menu.style.display === "block") ? "none" : "block";
+  }
+
+  // Cargar preferencias al iniciar
+  document.addEventListener('DOMContentLoaded', () => {
+    if (localStorage.getItem('tamañoFuente')) {
+      tamañoActual = parseFloat(localStorage.getItem('tamañoFuente'));
+      document.body.style.fontSize = tamañoActual + 'em';
+    }
+    
+    if (localStorage.getItem('indiceFuente')) {
+      indiceFuente = parseInt(localStorage.getItem('indiceFuente'));
+      document.body.style.fontFamily = fuentes[indiceFuente];
+    }
+    
+    if (localStorage.getItem('modoOscuro') === 'true') {
+      document.body.classList.add('modo-oscuro');
+    }
+    
+    if (localStorage.getItem('altoContraste') === 'true') {
+      document.body.classList.add('alto-contraste');
+    }
+    
+    if (localStorage.getItem('daltonismo') === 'true') {
+      document.body.classList.add('daltonismo');
+    }
+    
+    if (localStorage.getItem('cursorGrande') === 'true') {
+      document.body.classList.add('cursor-grande');
+    }
+
+    // Cerrar menú al hacer clic fuera
+    document.addEventListener('click', function(event) {
+      const menu = document.getElementById("submenu");
+      const btn = document.querySelector(".menu-btn");
+      if (!menu.contains(event.target) && !btn.contains(event.target)) {
+        menu.style.display = "none";
+      }
+    });
+  });
+</script>
+</body>
+</html>
