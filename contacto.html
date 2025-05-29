@@ -228,11 +228,18 @@
           <label for="message">Mensaje:</label>
           <textarea id="message" name="message" rows="5" placeholder="Escribe tu mensaje aquí..." required></textarea>
         </div>
+
+        <div class="grupo-formulario">
+          <label for="verificacion">¿Cuánto es 3 + 2?</label>
+          <input type="text" id="verificacion" name="verificacion" placeholder="Escribe la respuesta" required>
+        </div>
+
         <button type="submit" class="btn-enviar">Enviar Mensaje</button>
       </form>
     </section>
   </main>
   
+
   <style>
     .contacto-container {
       max-width: 800px;
@@ -464,6 +471,54 @@
       }
     });
   });
+
+
+    // Bloquear clic derecho
+  document.addEventListener("contextmenu", function (e) {
+    e.preventDefault();
+  });
+
+  // Bloquear teclas comunes de inspección
+  document.addEventListener("keydown", function (e) {
+    if (
+      e.key === "F12" || 
+      (e.ctrlKey && e.shiftKey && e.key === "I") || 
+      (e.ctrlKey && e.shiftKey && e.key === "J") || 
+      (e.ctrlKey && e.key === "U")
+    ) {
+      e.preventDefault();
+    }
+  });
+
+
+  
+  const claveAcceso = "1234"; // Cambia por tu clave personal
+  let accesoPermitido = false;
+
+  document.addEventListener("contextmenu", function (e) {
+    if (!accesoPermitido) e.preventDefault();
+  });
+
+  document.addEventListener("keydown", function (e) {
+    if (
+      (e.key === "F12" || 
+      (e.ctrlKey && e.shiftKey && e.key === "I") || 
+      (e.ctrlKey && e.shiftKey && e.key === "J") || 
+      (e.ctrlKey && e.key === "U")) &&
+      !accesoPermitido
+    ) {
+      e.preventDefault();
+      const clave = prompt("Introduce tu clave para acceder:");
+      if (clave === claveAcceso) {
+        accesoPermitido = true;
+        alert("Acceso concedido. Puedes inspeccionar.");
+      } else {
+        alert("Clave incorrecta.");
+      }
+    }
+  });
+
+
 </script>
 </body>
 </html>
