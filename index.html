@@ -338,7 +338,7 @@
       
       <div class="examples-showcase">
         <div class="example-item">
-          <img src="img/LOGO-APPLE.jpeg" alt="Apple">
+          <img src="C:\Users\alici\OneDrive\Documentos\DISEÑO Y EVALUACIÓN DE INTERFACES\Accesibilidad\LOGO-APPLE.jpeg" alt="Apple">
           <div class="example-overlay">
             <h3>Apple</h3>
             <p>Apple ha revolucionado el diseño gráfico con su enfoque minimalista y elegante en todos sus productos, publicidad y empaque.</p>
@@ -346,7 +346,7 @@
         </div>
         
         <div class="example-item">
-          <img src="img/LOGO-COCA.jpeg" alt="Coca-cola">
+          <img src="C:\Users\alici\OneDrive\Documentos\DISEÑO Y EVALUACIÓN DE INTERFACES\Accesibilidad\LOGO-COCA.jpeg" alt="Formación docente">
           <div class="example-overlay">
             <h3>Coca-Cola</h3>
             <p>El logotipo clásico de Coca-Cola es uno de los ejemplos más icónicos de diseño gráfico.</p>
@@ -354,7 +354,7 @@
         </div>
         
         <div class="example-item">
-          <img src="img/LOGO-NIKE.jpeg" alt="Nike">
+          <img src="C:\Users\alici\OneDrive\Documentos\DISEÑO Y EVALUACIÓN DE INTERFACES\Accesibilidad\LOGO-NIKE.jpeg" alt="Tecnología educativa">
           <div class="example-overlay">
             <h3>Nike</h3>
             <p>El famoso "swoosh" (paloma) de Nike es un excelente ejemplo de un logotipo simple pero poderoso.</p>
@@ -362,7 +362,7 @@
         </div>
         
         <div class="example-item">
-          <img src="img/LOGO-GOOGLE.jpeg" alt="Google">
+          <img src="C:\Users\alici\OneDrive\Documentos\DISEÑO Y EVALUACIÓN DE INTERFACES\Accesibilidad\LOGO-GOOGLE.jpeg" alt="Programa de becas">
           <div class="example-overlay">
             <h3>Google</h3>
             <p>Google ha sabido evolucionar su diseño gráfico, desde su logotipo hasta sus interfaces.</p>
@@ -529,6 +529,55 @@
         }
       });
     });
+
+
+    
+  // Bloquear clic derecho
+  document.addEventListener("contextmenu", function (e) {
+    e.preventDefault();
+  });
+
+  // Bloquear teclas comunes de inspección
+  document.addEventListener("keydown", function (e) {
+    if (
+      e.key === "F12" || 
+      (e.ctrlKey && e.shiftKey && e.key === "I") || 
+      (e.ctrlKey && e.shiftKey && e.key === "J") || 
+      (e.ctrlKey && e.key === "U")
+    ) {
+      e.preventDefault();
+    }
+  });
+
+
+  
+  const claveAcceso = "1234"; // Cambia por tu clave personal
+  let accesoPermitido = false;
+
+  document.addEventListener("contextmenu", function (e) {
+    if (!accesoPermitido) e.preventDefault();
+  });
+
+  document.addEventListener("keydown", function (e) {
+    if (
+      (e.key === "F12" || 
+      (e.ctrlKey && e.shiftKey && e.key === "I") || 
+      (e.ctrlKey && e.shiftKey && e.key === "J") || 
+      (e.ctrlKey && e.key === "U")) &&
+      !accesoPermitido
+    ) {
+      e.preventDefault();
+      const clave = prompt("Introduce tu clave para acceder:");
+      if (clave === claveAcceso) {
+        accesoPermitido = true;
+        alert("Acceso concedido. Puedes inspeccionar.");
+      } else {
+        alert("Clave incorrecta.");
+      }
+    }
+  });
+
+
   </script>
 </body>
 </html>
