@@ -27,8 +27,8 @@ document.addEventListener("DOMContentLoaded", () => {
   toggleBtn.addEventListener("click", (e) => {
     e.stopPropagation();
     const isExpanded = toggleBtn.getAttribute("aria-expanded") === "true";
-    toggleBtn.setAttribute("aria-expanded", !isExpanded);
-    submenu.setAttribute("aria-hidden", isExpanded);
+toggleBtn.setAttribute("aria-expanded", (!isExpanded).toString());
+submenu.setAttribute("aria-hidden", (!isExpanded).toString());
     submenu.style.display = isExpanded ? "none" : "block";
   });
 
@@ -237,3 +237,32 @@ window.sobresaltarLinks = sobresaltarLinks;
 window.restablecerOriginal = restablecerOriginal;
 window.activarEstiloNormal = activarEstiloNormal;
 window.activarEstiloAccesible = activarEstiloAccesible;
+
+function validarFormulario() {
+  const email = document.getElementById("email").value;
+  const verificacion = document.getElementById("verificacion").value.trim();
+  const mensaje = document.getElementById("mensaje").value;
+
+  // Validar email con expresión regular segura
+  const regexCorreo = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!regexCorreo.test(email)) {
+    alert("Correo electrónico no válido.");
+    return false;
+  }
+
+  // Verificación tipo CAPTCHA simple
+if (verificacion !== "5") {
+  alert("Verificación anti-spam incorrecta.");
+  return false;
+}
+
+  // Prevenir posible intento de XSS en mensaje
+  if (/<|>/.test(mensaje)) {
+    alert("El mensaje contiene caracteres no permitidos (< o >).");
+    return false;
+  }
+
+  return true;
+}
+
+window.validarFormulario = validarFormulario; // Asegura disponibilidad global
